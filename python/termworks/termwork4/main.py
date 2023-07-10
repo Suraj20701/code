@@ -16,9 +16,9 @@ def main() :
             elif(option == 3) :
                 db.delete(conn)
             elif(option == 4) :
-                db.update()
+                db.update(conn)
             elif(option == 5) :
-                db.displayNames()     
+                db.displayNames(conn)     
             elif(option == 6) :
                 return   
             else :

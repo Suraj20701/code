@@ -457,25 +457,78 @@ for x in "banana" :
 #         print(product, end='\n\n=============\n\n')
 
 
-class Calculator :
+# class Calculator :
     
-    # constructor to initalise a object 
-    def __init__(self, num1, num2) -> None:
-        self.num1 = num1
-        self.num2 = num2
+#     # constructor to initalise a object 
+#     def __init__(self, num1, num2) -> None:
+#         self.num1 = num1
+#         self.num2 = num2
 
-    add = lambda self : self.num1 + self.num2
+#     add = lambda self : self.num1 + self.num2
 
-    sub = lambda self : self.num1 - self.num2
+#     sub = lambda self : self.num1 - self.num2
 
-    multiply = lambda self : self.num1 * self.num2
+#     multiply = lambda self : self.num1 * self.num2
 
-# program starts execution at here
-def main() :
-    num1,opr,num2 = int(input("Enter num1 : ")), input("Enter operator : "), int(input("Enter num2 : "))
-    if opr == '+' :
-        print()
+# # program starts execution at here
+# def main() :
+#     num1,opr,num2 = int(input("Enter num1 : ")), input("Enter operator : "), int(input("Enter num2 : "))
+#     if opr == '+' :
+#         print()
 
 
-if __name__ == '__main__' :
-    main()
+# if __name__ == '__main__' :
+#     main()
+
+
+# DATABASE CONNECTION IN PYTHON
+
+# import sqlite3
+
+# connection = sqlite3.connect("product.db")
+# cur = connection.cursor()
+# query = """
+# CREATE TABLE PRODUCT(
+#     ID INT PRIMARY KEY,
+#     NAME VARCHAR(20),
+#     DESCRIPTION VARCHAR(50)
+# );
+
+# """
+
+# cur.execute(query)
+
+# insert = """
+# INSERT INTO PRODUCT VALUES(1, "book", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(2, "pen", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(3, "pencil", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(4, "pen", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(5, "pen", "THIS IS A PEN");
+
+# """
+
+
+# for row in insert.split('\n') :
+#     cur.execute(row)
+# connection.commit();
+
+# rsp = cur.execute("SELECT * FROM PRODUCT;")
+# for record in rsp.fetchall() :
+#     for data in record :
+#         print(data, end = "  ")
+#     print()
+
+# conditonalQuery = """
+# SELECT * FROM PRODUCT WHERE ID = ? ;
+
+# """
+# rsp = cur.execute(conditonalQuery, (4,))
+# row = rsp.fetchone()
+
+# print(row[0], row[1])
+# print(row['ID'], row['NAME'])
+
+
+
+
+

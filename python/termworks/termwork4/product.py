@@ -6,7 +6,7 @@ class ProductClass :
         self.dbName = dbName     
         pass
 
-    # 
+    # Create databse
     def createDb(self, conn) :
         cursor = conn.cursor()
         query = """
@@ -36,11 +36,11 @@ class ProductClass :
         cursor = conn.cursor()
         rsp = cursor.execute("SELECT * FROM PRODUCT;")
         print("\nPRODUCT DETAILS ARE")
+        print("\nId Name Qty Price")
         for row in rsp.fetchall() :
             for data in row :
                 print(data, end = " ")
             print()
-
         print()
 
     # DELETES PRODUCT WITH GIVEN PRODUCT ID
@@ -53,15 +53,15 @@ class ProductClass :
     # INCREASES PRICE BY 10%
     def update(self, conn) :
         cur = conn.cursor()
-        cur.execute("UPDATE PRODUCT SET PRICE = PRICE+PRICE*0.1 WHERE PRICE < 50")
+        cur.execute("UPDATE PRODUCT SET PRICE = PRICE + (PRICE*0.1) WHERE PRICE < 50")
         conn.commit()
     
     # DISPLAYS ALL PRODUCTS WHOSE QUANTITY IS LESS THAN 40
     def displayNames(self, conn) :
         cur = conn.cursor()
-        cur.execute("SELECT NAME FROM PRODUCT WHERE QTY<40")
+        cur.execute("SELECT NAME FROM PRODUCT WHERE QUANTITY<40")
         for data in cur.fetchall() :
-            print(data)
+            print(data[0])
 
 
     
