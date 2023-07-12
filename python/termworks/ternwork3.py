@@ -64,12 +64,12 @@ def searchBookByPrice():
 
 
 def searchBookByTitle():
-    author = input("Enter book title:")
+    title = input("Enter book title:")
     with open("BOOK.csv") as outfile:
         reader = csv.reader(outfile)
         result = []
         for row in reader:
-            if row[1] == author:
+            if row[1] == title:
                 result.append(row)
 
         if result == []:
