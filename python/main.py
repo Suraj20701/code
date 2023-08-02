@@ -529,6 +529,32 @@ for x in "banana" :
 # print(row['ID'], row['NAME'])
 
 
+# GUI Programming
+from tkinter import *
+
+def increment() :
+    myInt.set(myInt.get() + 1)
+    pass
+
+def reset() :
+    
+    myInt.set(0)
+    pass
+
+root = Tk()
+root.geometry("250x250")
+
+myInt = IntVar(0)
+
+
+Label(root, textvariable=myInt, fg="red").pack()
+Button(root, text="Increment", command= increment).pack()
+Button(root, text = "Reset", command=reset).pack()
+
+
+root.mainloop()
+
+
 
 
 
