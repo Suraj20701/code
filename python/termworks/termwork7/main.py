@@ -10,8 +10,8 @@ class MyCalc:
             self.lbl1 = Label(root,text="Enter 2nd num: ",fg="blue",bg = "yellow",font = (16))
             self.lbl1.place(x=20,y=100)
            
-            self.lbl2 = Label(root,text="Result is: ",fg="blue",bg = "yellow",font = (16))
-            self.lbl2.place(x=20,y=150)
+            self.lbl1 = Label(root,text="Result is: ",fg="blue",bg = "yellow",font = (16))
+            self.lbl1.place(x=20,y=150)
            
             self.tbox1 = Entry(root,font=("arial",12,"bold"),bg="white")
             self.tbox1.place(x=150,y=50)

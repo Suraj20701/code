@@ -353,3 +353,26 @@
 
 //     return 0;
 // }
+
+
+#include<iostream>
+using namespace std;
+
+bool check_palendrom(string s)
+{
+    int str_len = s.length();
+    for(int i=0; i< str_len /2 ; i++){
+        if(s[i] != s[str_len-i -1])
+          return false;
+    }
+    return true;
+}
+
+int main(int argc, char const *argv[])
+{
+    string s = "abbba";
+   bool ispalendrome =  check_palendrom(s);
+   if(ispalendrome) cout << "YES"; else cout << "NO";
+    return 0;
+}
+
