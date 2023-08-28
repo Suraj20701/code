@@ -13,17 +13,11 @@ visualize the data to gain insights into the students' performance.
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-'''
-# Step 1: Load the exam data using Pandas
-def load_exam_data(file_path):
-    return pd.read_csv(file_path)
-'''
 
-# Step 2: Calculate key statistics using Numpy
+
 def calculate_statistics(data):
     return np.mean(data['Score']), np.max(data['Score']), np.min(data['Score']), len(data)
 
-# Step 3: Visualize the exam scores using matplotlib
 def create_visualizations(data):
     # Histogram of exam scores
     plt.figure(figsize=(4, 4))

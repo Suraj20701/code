@@ -636,26 +636,26 @@ for x in "banana" :
 #self.tbox3.insert(END, str(num1+num2))
 
 
-class Person :
-    def __init__(self) -> None:
-        self.name = "Suraj"
-        pass
+# class Person :
+#     def __init__(self) -> None:
+#         self.name = "Suraj"
+#         pass
 
-    def printname(self) :
-        print(self.name)
-        pass
+#     def printname(self) :
+#         print(self.name)
+#         pass
 
-class Student(Person) : 
-    def __init__(self) -> None:
-        super().__init__()
-        pass
+# class Student(Person) : 
+#     def __init__(self) -> None:
+#         super().__init__()
+#         pass
 
-    def printname(self) :
-        print("hii")
-        pass
+#     def printname(self) :
+#         print("hii")
+#         pass
 
-student = Person()
-student.printname()
+# student = Person()
+# student.printname()
 
 
 
