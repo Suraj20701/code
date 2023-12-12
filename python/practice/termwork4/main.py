@@ -16,7 +16,7 @@ if __name__ == "__main__" :
         # product.display_product(conn)
         product.filter(conn)
     
-    except Exception as e :
+    except Exception as e:
         print(e)
 
     finally :

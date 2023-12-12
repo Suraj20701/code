@@ -11,7 +11,6 @@ def calculate_stat(data) :
     print("Count ", len(data))
 
 def draw_visual(data) :
-
     plt.figure(figsize=(4,4))
     plt.hist(data["Score"], bins=10)
     plt.xlabel("Marks")

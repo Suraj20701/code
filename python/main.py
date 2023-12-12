@@ -1,4 +1,7 @@
+                                            # UNIT 1 PYTHON FUNDAMENTALS
+
 # # ======= hello world program
+# print(data [, sep=" "] [, end = "\n"])
 # print("Hello World")
 
 # # ==== end and sep arguments ====
@@ -6,8 +9,22 @@
 # print(1,2,3,4,5, sep='|')
 
 # # ==== taking input ====
+# input([prompt])
 # ip = input("Enter something : ")
 # print(ip)
+
+# Implicit and explicit continuation
+# Divide statements after (), {}, operators
+# print("hello world "
+#       +"This is second line"
+#     , end = "!")
+
+# print()
+
+# # Divide statements at anywhere using \
+# print("Hello World \
+# is second line"\
+# , end = "!")
 
 # # ==== round function ====
 # distance, gallons = float(input("Enter the disatance : ")), float(input("Enter the gallons : "))
@@ -19,17 +36,6 @@
 # op1 = str1 + " " + str2
 
 
-# # String methods
-# str = "  hello, world  "
-# print(str)
-# print(str.split())
-# print(str.capitalize())
-# print(str.upper())
-# print(str.lower())
-# print(str.count('l'))
-# print(str.isupper())
-# print(str.strip())
-# print(str.islower())
 
 # modules
 
@@ -199,7 +205,7 @@ for x in "banana" :
 # print(sum(10,20))
 
 
-
+                                            # UNIT 2  HIGHER DATA STRUCTURE
 # # ==== List ====
 # Method	        Description
 # append()	        Adds an element at the end of the list
@@ -279,6 +285,7 @@ for x in "banana" :
 # Tuples are written with round brackets.
 
 # fruits = ("apple", "banana", "orange", "apple")
+
 # print(fruits)
 # print(fruits.count("apple"))
 # print(fruits.index("apple"))
@@ -308,11 +315,27 @@ for x in "banana" :
 
 
 # countries = {"CA": "Canada", "US": "United States", "MX": "Mexico"}
+# print("IO" in countries)
+# for key in countries.keys():
+#     print(key)
+
+# for values in countries.values() :
+#     print(values)
+
+# for items in countries.items() :
+#     print(items)
+
+# for key, value in countries.items() :
+#     print(key, value)
+
+# country_list = [["US", "United state"], ["MX", "MEXICO"]]
+# countries = dict(country_list)
+# print(dict)
 # countries.update({"In":"India"})
 # print(countries)
 # print(len(countries))
-
 # print(countries)
+
 # countries.pop("US")
 # print(countries)
 # print(countries["CA"])
@@ -369,6 +392,40 @@ for x in "banana" :
 #     print(len(course))
 
 
+
+# # ==== string concatination ====
+# str1, str2 = "Hello", "World"
+# op1 = str1 + " " + str2
+
+
+# # String methods
+# str = "  hello, world  "
+# print(str)
+# print(str.split())
+# print(str.capitalize())
+# print(str.upper())
+# print(str.lower())
+# print(str.count('l'))
+# print(str.isupper())
+# print(str.strip())
+# print(str.islower())
+
+
+# datetime
+# from datetime import datetime
+# from datetime import date
+# from datetime import time
+# print(datetime.now())
+# print(date.today())
+# print(date(2003, 1, 10))
+# print(time(12, 30, 15, 1256))
+# print(datetime(2003, 2, 10, 23, 6, 30, 123456))
+
+
+
+
+
+                                #UNIT 3 File Handling Exception and Working with database
 # File handling in python
 
 # outfile = open("test1.txt", 'w')
@@ -383,24 +440,28 @@ for x in "banana" :
 
 # with open("test1.txt") as file :
 #     print(file.read())
-   
+# count =0
 # with open("test1.txt") as myFile :
 #     content = myFile.readlines()
+    
 #     for line in content :
+#         count += len(line.split())
 #         print(line, end="")
+#     print("\nWord count", count)
 
 # with open("test1.txt") as myFile :
 #   print(myFile.readline(), end="")
 #   print(myFile.readline(), end = "")
    
 
-
-# with open("test1.txt") as myFile :
-#     content = myFile.readline()
-#     while content :
-#         print(content, end='')
-#         content = myFile.readline()
-
+# with open("test1.txt", "r") as readFile :
+#     content = readFile.readlines()
+#     capital = [line.upper() for line in content]
+#     with open("write.txt", "w") as writeFile :
+        # writeFile.writelines(capital)
+        # for line in content :
+        #     writeFile.write(line.upper())   
+   
 
 # lines = ["This is first line", "This is second line", "Here is third one"]
 # with open("test1.txt", "w") as file :
@@ -409,85 +470,88 @@ for x in "banana" :
 
 # with open("test1.txt", "w") as file :
 #     file.writelines(lines)
-
-
-
-# lines = []
-
-# with open("test1.txt", "r") as infile :
-#     lines = infile.readlines()
-#     lines = [line.replace("\n", "") for line in lines ]
-
-# print(lines)
-
 
 # import csv
 # data = [["Book1", "Author1"],["Book2", "Author2"], ["Book3", "Author3"]]
+
 # with open("testfile.csv", "w", newline="") as file:
 #     writer = csv.writer(file)
 #     writer.writerows(data)
+#     writer.writerow(["Book4", "Author4", "publisher4"])
 
-# with open("testfile.csv", "r") as outfile :
+# with open("testfile.csv", "r") as file :
+#     reader = csv.reader(file)    
+#     for row in reader :
+#         print(row[0])
 
-#     reader = csv.reader(outfile)
-#     print(reader)
-#     for l in reader :
-#         print(l[0])
+# Exception handling in python
 
-#  File handling in python
+# class OtherException(Exception) : 
+#     def __str__(self) -> str:
+#        return "This is user defined exception"
+#     pass
+    
+# try :
+#     with open("test1.txt") as myFile :
+#         content = myFile.readline()             
+#         while content :
+#             print(content, end='')
+#             content = myFile.readline()
+# except FileNotFoundError as e :
+#     print("File not found")  
+# except ZeroDivisionError as e :
+#     print("Cannot divide by zero")
+# except Exception as e :
+#     print("Other exception occurred", e)
 
-# outfile = open("test1.txt", 'w')
-# outfile.write("Hello World")
-# outfile.close()
 
-# with open("test1.txt", "a") as outfile :
-#     outfile.write("Written using file handler")
+# DATABASE CONNECTION IN PYTHON
 
-# with open("test1.txt", "a") as file :
-#     file.write(" This is second line")
+# import sqlite3
 
-# with open("test1.txt") as file :
-#     print(file.read())
+# connection = sqlite3.connect("product.db")
+# cur = connection.cursor()
+# query = """
+# CREATE TABLE  IF NOT EXISTS PRODUCT(
+#     ID INT PRIMARY KEY,
+#     NAME VARCHAR(20),
+#     DESCRIPTION VARCHAR(50)
+# );
+
+# """
+
+# cur.execute(query)
+
+# insert = """
+# INSERT INTO PRODUCT VALUES(1, "book", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(2, "pen", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(3, "pencil", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(4, "pen", "THIS IS A PEN");
+# INSERT INTO PRODUCT VALUES(5, "pen", "THIS IS A PEN");
+
+# """
+
+
+# for row in insert.split('\n') :
+#     cur.execute(row)
+# connection.commit();
+
+# cur.execute("SELECT * FROM PRODUCT;")
+# for record in cur.fetchmany(3) :
+#     for data in record :
+#         print(data, end = "  ")
+#     print()
+
+# print("\nConditional query \n")
+# query = "SELECT NAME, DESCRIPTION FROM PRODUCT WHERE ID = ?"
+# cur.execute(query, (4,))
+# for item in cur.fetchall():
+#     print(item[0], item[1])
+
+
+
    
-# with open("test1.txt") as myFile :
-#     content = myFile.readlines()
-#     for line in content :
-#         print(line, end="")
-
-# with open("test1.txt") as myFile :
-#   print(myFile.readline(), end="")
-#   print(myFile.readline(), end = "")
-   
-
-
-# with open("test1.txt") as myFile :
-#     content = myFile.readline()
-#     while content :
-#         print(content, end='')
-#         content = myFile.readline()
-
-
-# lines = ["This is first line", "This is second line", "Here is third one"]
-# with open("test1.txt", "w") as file :
-#     for line in lines :
-#         file.write(line)
-
-# with open("test1.txt", "w") as file :
-#     file.writelines(lines)
-
-
-
-# lines = []
-
-# with open("test1.txt", "r") as infile :
-#     lines = infile.readlines()
-#     lines = [line.replace("\n", "") for line in lines ]
-
-# print(lines)
-
-
-   
-
+                                            # UNIT 4 OOP IN PYTHON
 
 # OBJECT ORIENTED PROGRAMMING(OOP)
 
@@ -516,6 +580,12 @@ for x in "banana" :
 #     for product in catelog :
 #         print(product, end='\n\n=============\n\n')
 
+# plus = lambda num1, num2 : num1+num2; 
+# ans = plus(1,2)
+# print(ans)
+
+# qty = float(input("QTY "))
+# print(qty)
 
 # class Calculator :
     
@@ -541,67 +611,51 @@ for x in "banana" :
 #     main()
 
 
-# file handling
 
-# import csv
-# data = [["Book1", "Author1"],["Book2", "Author2"], ["Book3", "Author3"]]
-# with open("testfile.csv", "w", newline="") as file:
-#     writer = csv.writer(file)
-#     writer.writerows(data)
+# class Product :
+#     def __init__(self, name, price, qty) -> None:
+#         self.name = name
+#         self.price = price
+#         self.qty = qty
 
-# with open("testfile.csv", "r") as outfile :
+#     def getDescription(self) :
+#         return f"{self.name}  {self.price} {self.qty}"
+    
+# class Book(Product) :
+#     def __init__(self, name, price, qty, author) -> None:
+#         super().__init__(name, price, qty)
+#         self.author = author
+    
+    
+#     def getDescription(self) :
+#         return super().getDescription() + "AUTHOR " + self.author
+    
+# b1 = Book("Book1", 200, 15, "Author1")
+# print(b1.getDescription())
 
-#     reader = csv.reader(outfile)
-#     print(reader)
-#     for l in reader :
-#         print(l[0])
+ 
+# class Person :
+#     def __init__(self) -> None:
+#         self.name = "Suraj"
+#         pass
 
-# DATABASE CONNECTION IN PYTHON
+#     def printname(self) :
+#         print(self.name)
+#         pass
 
-# import sqlite3
+# class Student(Person) : 
+#     def __init__(self) -> None:
+#         super().__init__()
+#         pass
+    
+    
+#     def printname(self) :
+#         print("hii")
+#         pass
 
-# connection = sqlite3.connect("product.db")
-# cur = connection.cursor()
-# query = """
-# CREATE TABLE PRODUCT(
-#     ID INT PRIMARY KEY,
-#     NAME VARCHAR(20),
-#     DESCRIPTION VARCHAR(50)
-# );
+# student = Student()
+# student.printname()
 
-# """
-
-# cur.execute(query)
-
-# insert = """
-# INSERT INTO PRODUCT VALUES(1, "book", "THIS IS A PEN");
-# INSERT INTO PRODUCT VALUES(2, "pen", "THIS IS A PEN");
-# INSERT INTO PRODUCT VALUES(3, "pencil", "THIS IS A PEN");
-# INSERT INTO PRODUCT VALUES(4, "pen", "THIS IS A PEN");
-# INSERT INTO PRODUCT VALUES(5, "pen", "THIS IS A PEN");
-
-# """
-
-
-# for row in insert.split('\n') :
-#     cur.execute(row)
-# connection.commit();
-
-# cur.execute("SELECT * FROM PRODUCT;")
-# for record in cur.fetchall() :
-#     for data in record :
-#         print(data, end = "  ")
-#     print()
-
-# conditonalQuery = """
-# SELECT * FROM PRODUCT WHERE ID = ? ;
-
-# """
-# rsp = cur.execute(conditonalQuery, (4,))
-# row = rsp.fetchone()
-
-# print(row[0], row[1])
-# print(row['ID'], row['NAME'])
 
 
 # GUI Programming
@@ -636,28 +690,103 @@ for x in "banana" :
 #self.tbox3.insert(END, str(num1+num2))
 
 
-# class Person :
-#     def __init__(self) -> None:
-#         self.name = "Suraj"
-#         pass
+# from tkinter import *
+# from tkinter import messagebox
 
-#     def printname(self) :
-#         print(self.name)
-#         pass
+# def calculate(operation:str) :
+#     num1, num2 = tbox1.get(), tbox2.get()
+#     if not num1 or not num2 :
+#         messagebox.showerror("Error", message="Please Enter num1 and num2")
+#         return
+        
+#     num1 = int(num1)
+#     num2 = int(num2)
+#     answer = 0
 
-# class Student(Person) : 
-#     def __init__(self) -> None:
-#         super().__init__()
-#         pass
+#     if operation == "add" :
+#         answer = num1+num2
+#     elif operation == "sub" :
+#         answer = num1-num2
+#     elif operation == "mul" :
+#         answer = num1*num2
+#     elif operation == "div" :
+#         answer = num1/num2
+    
+#     tbox3.config(state="normal")
+#     tbox3.delete(0,END)
+#     tbox3.insert(END, str(answer))
+#     tbox3.config(state="disabled")
+#     pass
 
-#     def printname(self) :
-#         print("hii")
-#         pass
-
-# student = Person()
-# student.printname()
 
 
+# if __name__ == '__main__' :
+#     root = Tk()
+#     root.title("Calculator")
+#     root.geometry("300x250")
+#     Label(root, text="Enter first number :", foreground="blue").place(x=20,y=20)
+#     Label(root, text="Enter second number :", foreground="blue").place(x=20,y=60)
+#     Label(root, text="Result :", foreground="blue").place(x=20,y=100)
+
+#     tbox1 = Entry(root,background="white")
+#     tbox1.place(x=160, y=20)
+#     tbox2 = Entry(root,background="white")
+#     tbox2.place(x=160, y=60)
+#     tbox3 = Entry(root,background="white")
+#     tbox3.place(x=160, y=100)
+#     tbox3.config(state = "disabled")
+
+#     Button(text="Sum", background="blue", foreground="white", command=lambda:calculate("add")).place(x=20, y=140)
+#     Button(text="Sub", background="blue", foreground="white", command=lambda:calculate("sub")).place(x=80, y=140)
+#     Button(text="Multiply", background="blue", foreground="white", command=lambda:calculate("mul")).place(x=140, y=140)
+#     Button(text="Divide", background="blue", foreground="white", command=lambda:calculate("div")).place(x=220, y=140)
+
+#     root.mainloop()
 
 
+from tkinter import *
+from tkinter import messagebox
 
+def calculate() :
+    p, t, r = priciple.get(), time.get(), rate.get()
+    
+    try :
+        p, t, r = float(p), float(t), float(r)
+        interest = p*t*r/100
+    except ValueError as e :
+        messagebox.showerror("ERROR", "PLease Enter valid values")
+    except Exception as e :
+        messagebox.showerror("ERROR","Exception occured")
+
+   
+        
+    
+    intrest.config(state="normal")
+    intrest.delete(0, END)
+    intrest.insert(END,str(interest))
+    intrest.config(state="disabled")
+    print("Calculate") 
+
+
+root = Tk()
+root.title("Future Caculator")
+root.geometry("250x250")
+
+Label(root , text="PRINCIPLE : ", fg="blue").place(x=10, y=20)
+Label(root , text="TIME : ", fg="blue").place(x=10, y=50)
+Label(root , text="RATE : ", fg="blue").place(x=10, y=80)
+Label(root , text="INTEREST : ", fg="blue").place(x=10, y=110)
+
+priciple = Entry(root, bg="white")
+priciple.place(x=100, y= 20)
+time = Entry(root, bg="white")
+time.place(x=100, y= 50)
+rate = Entry(root, bg="white")
+rate.place(x=100, y= 80)
+intrest = Entry(root, bg="white")
+intrest.config(state="disabled")
+intrest.place(x=100, y= 110)
+
+Button(root,text="CALCULATE", command=calculate).place(x = 80, y=140)
+
+root.mainloop()
