@@ -1,33 +1,72 @@
-# leaky bucket
+# DVR
 
-import time
-class LeackyBucket :
-    def __init__(self, capacity, rate) :
-        self.capacity = capacity
-        self.rate = rate
-        self.tokens = 0
-        self.last_time = time.time()
+import sys
 
-    def add_token(self) :
-        current_time = time.time()
-        time_elasped = current_time - self.last_time
-        self.tokens = min(self.capacity, self.tokens+time_elasped*self.rate)
-        self.last_time = current_time
+class Network:
+    def __init__(self, nodes):
+        self.nodes = nodes
+        self.graph = {}  # Dictionary to store network topology
+        self.distance_vector = {}  # Dictionary to store distance vectors
 
-    def transmit(self, packet_size) :
-        if self.tokens >= packet_size :
-            self.tokens -= packet_size
-            print(f"Transmitted {packet_size} bytes")
-            return True
-        else :
-            print("Dropped - Insufficient tokens")
-            return False
-        
-if __name__ == "__main__" :
-    bucket = LeackyBucket(capacity=50, rate=10)
-    for i in range(1, 11) :
-        print(f"Time {i} seconds")
-        bucket.add_token()
-        packet_size = eval(input("Enter the packe size : "))
-        bucket.transmit(packet_size)
-        
+    def add_link(self, node1, node2, cost):
+        # Add a link between two nodes with a given cost
+        if node1 not in self.graph:
+            self.graph[node1] = {}
+        self.graph[node1][node2] = cost
+
+        if node2 not in self.graph:
+            self.graph[node2] = {}
+        self.graph[node2][node1] = cost
+
+    def initialize_distance_vector(self, node):
+        # Initialize the distance vector for a node
+        self.distance_vector[node] = {node: 0}
+        for n in self.nodes:
+            if n != node:
+                self.distance_vector[node][n] = sys.maxsize
+
+    def update_distance_vector(self, node):
+        # Update the distance vector for a node
+        for dest in self.nodes:
+            if dest != node:
+                min_cost = sys.maxsize
+                for neighbor in self.graph[node]:
+                    if dest in self.distance_vector[neighbor]:
+                        cost = self.distance_vector[neighbor][dest] + self.graph[node][neighbor]
+                        if cost < min_cost:
+                            min_cost = cost
+                self.distance_vector[node][dest] = min_cost
+
+    def print_routing_table(self, node):
+        # Print the routing table for a node
+        print(f"Routing table for Node {node}:")
+        print("Destination\tCost")
+        for dest, cost in self.distance_vector[node].items():
+            if dest != node:
+                print(f"{dest}\t\t{cost}")
+        print()
+
+if __name__ == "__main__":
+    nodes = [1, 2, 3, 4, 5]
+    network = Network(nodes)
+
+    network.add_link(1, 2, 2)
+    network.add_link(1, 3, 1)
+    network.add_link(1, 4, 3)
+    network.add_link(2, 1, 2)
+    network.add_link(2, 4, 2)
+    network.add_link(3, 1, 1)
+    network.add_link(4, 5, 2)
+    network.add_link(4, 2, 2)
+    
+
+    for node in nodes:
+        network.initialize_distance_vector(node)
+
+    num_iterations = 6  # Number of iterations to update the distance vectors
+    for _ in range(num_iterations):
+        for node in nodes:
+            network.update_distance_vector(node)
+
+    for node in nodes:
+        network.print_routing_table(node)
